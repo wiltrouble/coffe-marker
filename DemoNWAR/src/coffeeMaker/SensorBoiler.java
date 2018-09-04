@@ -1,5 +1,12 @@
 package coffeeMaker;
 
-public class SensorBoiler {
+public class SensorBoiler implements ISensor {
+
+	@Override
+	public void getState() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
