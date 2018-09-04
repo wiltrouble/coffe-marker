@@ -5,7 +5,7 @@ public class WarmerPlate implements IWarmer {
 	protected boolean on;
 	
 	public void turnOn() {
-		if (sensor.getState() == sensorStates.NOT_EMPTY) {
+		if (sensor.getState() == SensorState.NOT_EMPTY) {
 			this.on = true;
 		} else {
 			this.on = false;

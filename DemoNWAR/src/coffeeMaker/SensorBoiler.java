@@ -3,10 +3,11 @@ package coffeeMaker;
 public class SensorBoiler implements ISensor {
 
 	@Override
-	public void getState() {
+	public SensorState getState() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
+	
 
 }

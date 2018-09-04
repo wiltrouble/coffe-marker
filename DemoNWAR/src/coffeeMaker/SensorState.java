@@ -1,5 +1,7 @@
 package coffeeMaker;
 
 public enum SensorState {
-	empty,notEmpty,warmerEmpty;
+	EMPTY,
+	NOT_EMPTY,
+	WARMER_EMPTY
 }
