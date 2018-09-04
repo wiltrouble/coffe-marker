@@ -3,9 +3,5 @@ package coffeeMaker;
 
 
 public interface ISensor {
-	
-	void getState();
-	
-
-
+	sensorStates getState();
 }
