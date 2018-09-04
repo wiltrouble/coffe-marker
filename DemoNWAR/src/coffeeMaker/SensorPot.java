@@ -1,5 +1,10 @@
 package coffeeMaker;
 
-public class SensorPot {
+public class SensorPot implements ISensor {
+
+	@Override
+	public void getState() {
+		
+	}
 
 }
