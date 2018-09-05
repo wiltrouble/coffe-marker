@@ -1,7 +1,10 @@
 package coffeeMaker;
 
 public class SensorPot implements ISensor {
-	public SensorState getState() {
-		return SensorState.NOT_EMPTY;
+	public void getState() {
+		protectec SensorState state;
+		
+		System.out.println("test");
+	//public SensorState getState() {} Como implementar esto?
   }
 }
