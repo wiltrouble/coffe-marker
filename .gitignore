@@ -1,2 +1,7 @@
-/.metadata/
-/.recommenders/
+*.metadata/
+*.recommenders/
+*.settings/
+
+*bin/
+
+*.idea
