@@ -23,19 +23,29 @@ public class BoilerTest {
 	@Test
 	public void testIsBoilerOn() throws Exception {
 		startBrewing();
-		assert(warmer.boilerOn);
+		if (warmer instanceof WarmerMock) {
+			WarmerMock w = (WarmerMock)warmer;
+			assert(w.boilerOn);
+		}
 	}
 	
 	@Test
 	public void testIsReliefValveClosed() throws Exception {
 		startBrewing();
-		assert(reliefValve.valveClosed);
+		if (reliefValve instanceof ReliefValveMock) {
+			ReliefValveMock r = (ReliefValveMock) reliefValve;
+			assert(r.valveClosed);
+		}
 	}
 	
 	@Test
 	public void TestIsBolierOnAndReliefValveClosed() throws Exception {
 		startBrewing();
-		assert(warmer.boilerOn);
-		assert(reliefValve.valveClosed);
+		if (warmer instanceof WarmerMock && reliefValve instanceof ReliefValveMock) {
+			WarmerMock w = (WarmerMock)warmer;
+			ReliefValveMock r = (ReliefValveMock) reliefValve;
+			assert(w.boilerOn);
+			assert(r.valveClosed);
+		}
 	}
 }
