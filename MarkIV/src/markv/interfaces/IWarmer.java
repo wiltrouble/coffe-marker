@@ -1,8 +1,8 @@
 package markv.interfaces;
 
+import markv.enums.*;
+
 public interface IWarmer {
-	void setWarmerState(int warmerState);
-	
-	int IS_ON = 0;
-	int IS_OFF = 1;
+	void setWarmerState(WarmerState warmerState);
+	WarmerState getWarmerState();
 }

@@ -1,6 +1,7 @@
 package test;
 
 import markv.Boiler;
+import markv.enums.*;
 import markv.interfaces.*;
 import org.junit.*;
 
@@ -23,29 +24,19 @@ public class BoilerTest {
 	@Test
 	public void testIsBoilerOn() throws Exception {
 		startBrewing();
-		if (warmer instanceof WarmerMock) {
-			WarmerMock w = (WarmerMock)warmer;
-			assert(w.boilerOn);
-		}
+		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_ON);
 	}
 	
 	@Test
 	public void testIsReliefValveClosed() throws Exception {
 		startBrewing();
-		if (reliefValve instanceof ReliefValveMock) {
-			ReliefValveMock r = (ReliefValveMock) reliefValve;
-			assert(r.valveClosed);
-		}
+		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_CLOSED);
 	}
 	
 	@Test
 	public void TestIsBolierOnAndReliefValveClosed() throws Exception {
 		startBrewing();
-		if (warmer instanceof WarmerMock && reliefValve instanceof ReliefValveMock) {
-			WarmerMock w = (WarmerMock)warmer;
-			ReliefValveMock r = (ReliefValveMock) reliefValve;
-			assert(w.boilerOn);
-			assert(r.valveClosed);
-		}
+		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_ON);
+		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_CLOSED);
 	}
 }

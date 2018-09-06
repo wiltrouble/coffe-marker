@@ -1,16 +1,22 @@
 package test;
 
-import markv.interfaces.IWarmer;
+import markv.enums.*;
+import markv.interfaces.*;
 
 public class WarmerMock implements IWarmer {
-	public boolean boilerOn;
+	private WarmerState warmerState;
 	
 	public WarmerMock() {
-		this.boilerOn = false;
+		warmerState = WarmerState.WARMER_IS_OFF;
 	}
 	
 	@Override
-	public void setWarmerState(int warmerState) {
-		this.boilerOn = warmerState == IS_ON;	
+	public WarmerState getWarmerState() {
+		return warmerState;
+	}
+	
+	@Override
+	public void setWarmerState(WarmerState warmerState) {
+		this.warmerState = warmerState;	
 	}
 }

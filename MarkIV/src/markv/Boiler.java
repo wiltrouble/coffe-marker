@@ -1,5 +1,6 @@
 package markv;
 
+import markv.enums.*;
 import markv.interfaces.*;
 
 public class Boiler {
@@ -12,7 +13,7 @@ public class Boiler {
 	}
 	
 	public void startBrewing() {
-		reliefValve.setReliefValveState(IReliefValve.IS_CLOSED);
-		warmer.setWarmerState(IWarmer.IS_ON);
+		reliefValve.setReliefValveState(ValveState.VALVE_IS_CLOSED);
+		warmer.setWarmerState(WarmerState.WARMER_IS_ON);
 	}
 }

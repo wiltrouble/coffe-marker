@@ -1,8 +1,8 @@
 package markv.interfaces;
 
+import markv.enums.*;
+
 public interface IReliefValve {
-	void setReliefValveState(int reliefValveState);
-	
-	int IS_OPEN = 0;
-	int IS_CLOSED = 1;
+	ValveState getReliefValveState();
+	void setReliefValveState(ValveState reliefValveState);
 }
