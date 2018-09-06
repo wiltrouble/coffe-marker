@@ -3,6 +3,6 @@ package coffeeMaker;
 
 
 public interface ISensor {
-	SensorState getState();
+	SensorState getState(int parameter);
 	
 }
