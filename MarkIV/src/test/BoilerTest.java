@@ -54,4 +54,10 @@ public class BoilerTest {
 		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_OFF);
 		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_OPEN);
 	}
+	
+	@Test
+	public void testIsReadyBoilerWhenStartBrewing() throws Exception {
+		boiler.startBrewing();
+		assert(boiler.isReady());
+	}
 }

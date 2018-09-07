@@ -3,5 +3,6 @@ package markv.interfaces;
 import markv.enums.*;
 
 public interface ISensor {
-	BoilerState getBoilerLevel();
+	SensorState getSensorState();
+	void setSensorState(SensorState sensorState);
 }

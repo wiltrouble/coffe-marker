@@ -11,6 +11,7 @@ public class Boiler {
 	public Boiler(IReliefValve reliefValve, IWarmer warmer) {
 		this.reliefValve = reliefValve;
 		this.warmer = warmer;
+		this.waterSensor = new WaterSensor();
 	}
 	
 	public void startBrewing() {
@@ -21,5 +22,13 @@ public class Boiler {
 	public void pause() {
 		warmer.setWarmerState(WarmerState.WARMER_IS_OFF);
 		reliefValve.setReliefValveState(ValveState.VALVE_IS_OPEN);
+	}
+	
+	public boolean isReady() {
+		if (waterSensor.getSensorState() == SensorState.IS_EMPTY) {
+			return false;
+		}
+		
+		return true;
 	}
 }
