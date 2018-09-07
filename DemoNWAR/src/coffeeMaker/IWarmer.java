@@ -2,11 +2,8 @@ package coffeeMaker;
 
 public interface IWarmer {
 
-	public boolean swichWarmer( SensorState estado);
-
-	
-	
-	
-
+	public void turnOn();
+	public void turnOff();
+	public boolean isOn();
 
 }
