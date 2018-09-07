@@ -17,26 +17,41 @@ public class BoilerTest {
 		boiler = new Boiler(reliefValve, warmer);
 	}
 	
-	private void startBrewing() {
+	@Test
+	public void testIsBoilerOnWhenStartBrewing() throws Exception {
 		boiler.startBrewing();
-	}
-	
-	@Test
-	public void testIsBoilerOn() throws Exception {
-		startBrewing();
 		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_ON);
 	}
 	
 	@Test
-	public void testIsReliefValveClosed() throws Exception {
-		startBrewing();
+	public void testIsReliefValveClosedWhenStartBrewing() throws Exception {
+		boiler.startBrewing();
 		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_CLOSED);
 	}
 	
 	@Test
-	public void TestIsBolierOnAndReliefValveClosed() throws Exception {
-		startBrewing();
+	public void testIsBolierOnAndReliefValveClosedWhenStartBrewing() throws Exception {
+		boiler.startBrewing();
 		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_ON);
 		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_CLOSED);
+	}
+	
+	@Test
+	public void testIsBolerOffWhenPause() throws Exception {
+		boiler.pause();
+		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_OFF);
+	}
+	
+	@Test
+	public void testIsReliefValveOpenWhenPause() throws Exception {
+		boiler.pause();
+		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_OPEN);
+	}
+	
+	@Test
+	public void testIsBoilerOffAndReliefValveOpenWhenPause() throws Exception {
+		boiler.pause();
+		assert(warmer.getWarmerState() == WarmerState.WARMER_IS_OFF);
+		assert(reliefValve.getReliefValveState() == ValveState.VALVE_IS_OPEN);
 	}
 }
