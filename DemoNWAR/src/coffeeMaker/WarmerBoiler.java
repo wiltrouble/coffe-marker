@@ -1,6 +1,7 @@
 package coffeeMaker;
 
 public class WarmerBoiler implements IWarmer {
+	
 	protected boolean on;
 	
 	public void turnOn() {
