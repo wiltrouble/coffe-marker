@@ -10,14 +10,14 @@ public class CoffeeMaker {
 	SensorState state;
 	public void makeCoffee() {
 		//Es un ciclo infinito, pero tal vez se podria crear un flag para que cuando acabe el proceso cambie de estado
-		while (true) {
+		while (boiler.copas<0) {
 			//Pregunta si cambia de estado el boton
 			if (button.state) {
 				
 				//Entra en funcionamiento el calentamiento del Boiler
 				if (sensorBoiler.getState()) {
 					boiler.startBrewing();
-					pot.heatPot();
+					pot.warmerPot(); //warmer=calentar
 					
 					//Pregunta si se retira el pot de la zonaPot
 					if(sensorPot.getState()==state.EMPTY) {
