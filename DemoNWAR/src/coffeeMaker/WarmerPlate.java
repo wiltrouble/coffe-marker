@@ -1,22 +1,25 @@
 package coffeeMaker;
 
 public class WarmerPlate implements IWarmer {
-	protected ISensor sensor = new SensorPot();
-	protected boolean on;
-	
-	public void turnOn() {
-		if (sensor.getState() == SensorState.NOT_EMPTY) {
-			this.on = true;
-		} else {
-			this.on = false;
-		}
+
+	@Override
+	public boolean swichWarmer(SensorState estadoSensor) {
+		boolean estadoCalentador=true;
+		if(estadoSensor==SensorState.NOT_EMPTY) {
+			estadoCalentador =false;
+				}
+		
+		if(estadoSensor==SensorState.WARMER_EMPTY) {
+			estadoCalentador= false;
+				}
+		
+		return estadoCalentador;
+			
+			
+		
 	}
 	
-	public void turnOff() {
-		this.on = false;
-	}
 	
-	public boolean isOn() {
-		return this.on;
-	}
+	
+	
 }
