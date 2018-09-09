@@ -1,18 +1,5 @@
-<<<<<<< origin/AbelNWAR
 package coffeeMaker;
 
-
-
 public interface ISensor {
-	sensorStates getState();
+	SensorStatePlate getState(int parameter);
 }
-=======
-package coffeeMaker;
-
-
-
-public interface ISensor {
-	SensorState getState(int parameter);
-	
-}
->>>>>>> local
