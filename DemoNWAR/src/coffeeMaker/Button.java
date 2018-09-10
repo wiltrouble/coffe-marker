@@ -1,12 +1,12 @@
 package coffeeMaker;
 
 public class Button {
-	public boolean state;
-	public boolean buttonOn() {
+	public boolean state=false;
+	public boolean on() {
 		state=true;
 		return state;
 	}
-	public boolean buttonOff() {
+	public boolean off() {
 		state=false;
 		return state;
 	}
