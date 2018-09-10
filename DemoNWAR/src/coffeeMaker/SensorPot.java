@@ -1,20 +1,26 @@
 package coffeeMaker;
 
-public class SensorPot implements ISensor {
+import coffeeMaker.enums.SensorStatePlate;
+
+public class SensorPot implements ISensorPot {
 	
 	private int weightPot=1;
 	
-	public SensorState getState(int overPlate) {
+	public SensorStatePlate getState(int overPlate) {
 			
 		if (overPlate<weightPot) {
-			return SensorState.WARMER_EMPTY;
+			System.out.println("====sensor devuelve no existe pot====");
+			return SensorStatePlate.WARMER_EMPTY;
+			
+			
 		}
 		
 		if (overPlate==weightPot) {
-			return SensorState.EMPTY;
+			System.out.println("====sensor  devuelve que el pot esta  pero vacio====");
+			return SensorStatePlate.EMPTY;
 		}
-
-		return SensorState.NOT_EMPTY;
+		System.out.println("====sensor devuelve que el pot tiene contenido====");
+		return SensorStatePlate.NOT_EMPTY;
 	}
 
 }
