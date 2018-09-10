@@ -1,50 +1,30 @@
-<<<<<<< origin/AbelNWAR
+
 package coffeeMaker;
 
-public class WarmerPlate implements IWarmer {
-	protected ISensor sensor = new SensorPot();
-	protected boolean on;
-	
-	public void turnOn() {
-		if (sensor.getState() == sensorStates.NOT_EMPTY) {
-			this.on = true;
-		} else {
-			this.on = false;
-		}
-	}
-	
-	public void turnOff() {
-		this.on = false;
-	}
-	
-	public boolean isOn() {
-		return this.on;
-	}
-}
-=======
-package coffeeMaker;
+import coffeeMaker.enums.SensorStatePlate;
+import coffeeMaker.enums.WarmerState;
+import coffeeMaker.interfaces.IWarmer;
 
-public class WarmerPlate implements IWarmer {
+public class WarmerPlate implements IWarmerPot {
 
-	@Override
-	public boolean swichWarmer(SensorState estadoSensor) {
-		boolean estadoCalentador=true;
-		if(estadoSensor==SensorState.NOT_EMPTY) {
-			estadoCalentador =false;
+	public WarmerState getState(SensorStatePlate estadoSensor) {
+	
+		if(estadoSensor==SensorStatePlate.EMPTY) {
+			
+			System.out.println("el sensor mado una señal de que el pot esta vacio //apagamos calentador");
+			return WarmerState.WARMER_IS_OFF;			
+				}		
+		if(estadoSensor==SensorStatePlate.WARMER_EMPTY) {
+			
+
+			System.out.println("el sensor mado una señal de que el pot no esta en su contendor //apagamos calentador");
+				return WarmerState.WARMER_IS_OFF;
 				}
 		
-		if(estadoSensor==SensorState.WARMER_EMPTY) {
-			estadoCalentador= false;
-				}
-		
-		return estadoCalentador;
-			
-			
-		
+
+		System.out.println("el sensor mado una señal de que el pot tiene contenido //prendemos el calentado calentador");
+		return WarmerState.WARMER_IS_ON;
 	}
 	
-	
-	
-	
 }
->>>>>>> local
+
