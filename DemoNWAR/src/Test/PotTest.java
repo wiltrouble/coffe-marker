@@ -1,32 +1,18 @@
 package Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import coffeeMaker.Pot;
 
-class PotTest {
+public class PotTest {
 
 	@Test
-	void test() {
-		
-		
-	Pot ppot1 = new Pot();
+	public void test() {
+	Pot name = new Pot();
 	
-	ppot1.estadoPot();
-	
-	ppot1.ponerPotEnContenedor();
-	
-	ppot1.cargarPot(3);
-	
-	ppot1.estadoPot();
-	
-	ppot1.ponerPotEnContenedor();
-	
-	ppot1.sacarPot();
-	
-	
+	name.headPot(0);
 	
 	}
 
