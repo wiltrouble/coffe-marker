@@ -15,7 +15,7 @@ public class WarmerMock implements IWarmer {
 		return warmerState;
 	}
 	
-	@Override
+	
 	public void setWarmerState(WarmerState warmerState) {
 		this.warmerState = warmerState;	
 	}

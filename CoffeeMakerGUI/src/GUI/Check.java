@@ -8,8 +8,10 @@ package GUI;
 
 import coffeeMaker.SensorPot;
 import coffeeMaker.WaterSensor;
+import coffeeMaker.PressureRelief;
 import coffeeMaker.enums.SensorStateBoiler;
 import coffeeMaker.enums.SensorStatePlate;
+import coffeeMaker.enums.ValveState;
 import javax.swing.JPanel;
 import java.awt.Color;
 /**
@@ -39,6 +41,15 @@ public class Check {
         
         if (cupState > 1){
             sensorPot.setState(SensorStatePlate.NOT_EMPTY);
+        }
+    }
+    
+    public void setPanelValve(JPanel panel, PressureRelief pressureRelief){
+        if(pressureRelief.getReliefValveState() == ValveState.VALVE_IS_CLOSED){
+            panel.setBackground(Color.CYAN);
+            
+        }else{            
+            panel.setBackground(Color.WHITE);
         }
     }
     

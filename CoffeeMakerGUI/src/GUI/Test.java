@@ -80,9 +80,12 @@ public class Test extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         Jar = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(null);
 
         jButton1.setText("Agregar agua");
@@ -113,7 +116,7 @@ public class Test extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(560, 150, 89, 23);
+        jButton2.setBounds(560, 150, 110, 23);
 
         jButton3.setText("Parar Llenado");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -124,14 +127,14 @@ public class Test extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(40, 230, 99, 23);
 
-        jButton4.setText("vaciar agua");
+        jButton4.setText("Vaciar agua");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(50, 270, 89, 23);
+        jButton4.setBounds(39, 270, 100, 23);
 
         jProgressBar2.setBackground(new java.awt.Color(204, 255, 255));
         jProgressBar2.setForeground(new java.awt.Color(51, 0, 0));
@@ -184,6 +187,7 @@ public class Test extends javax.swing.JFrame {
         jPanel4.setBounds(260, 260, 32, 36);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setToolTipText("SB");
 
         jLabel3.setText("PR");
@@ -202,11 +206,11 @@ public class Test extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(200, 110, 33, 37);
+        jPanel3.setBounds(200, 110, 37, 40);
 
         jButton6.setText("Quitar Jarra");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +219,7 @@ public class Test extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(560, 190, 91, 23);
+        jButton6.setBounds(560, 190, 110, 23);
 
         javax.swing.GroupLayout JarLayout = new javax.swing.GroupLayout(Jar);
         Jar.setLayout(JarLayout);
@@ -232,24 +236,37 @@ public class Test extends javax.swing.JFrame {
         Jar.setBounds(410, 210, 130, 120);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel7.setText("SP");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(360, 260, 44, 37);
+        jPanel2.setBounds(540, 277, 30, 40);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coffeeSmall2.png"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(90, 20, 500, 370);
+
+        jLabel6.setText("Hola!!!! ");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(40, 390, 470, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,13 +277,14 @@ public class Test extends javax.swing.JFrame {
     Check check = new Check();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        ac = new ActionListener() {
+        if(!brewCycle){
+         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cupsBoiler++;
                 jProgressBar1.setValue(cupsBoiler);
                 jLabel1.setText("Tazas:"+cupsBoiler);
+                jLabel6.setText("El usuario esta llenando agua");
                 check.BoilerSensor(cupsBoiler,  waterSensor);
                 check.setPanel(cupsBoiler, jPanel4);
                 if(cupsBoiler>=12){
@@ -275,7 +293,9 @@ public class Test extends javax.swing.JFrame {
             }
         };
         t = new Timer(500,ac);
-        t.start();
+        t.start();   
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
     boolean stateJar=false;
@@ -286,32 +306,45 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2.setVisible(true);
         Jar.setVisible(false);
         cupsPot=1;
+        ac = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {}
+        };
+        t = new Timer(500,ac);
+        t.start();
+        t.stop();
          
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            t.stop();
+            if(!brewCycle){
+                t.stop();
+                jLabel6.setText("El usuario se detuvo");
+            }
+            
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         ac = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cupsBoiler--;
-                jProgressBar1.setValue(cupsBoiler);
-                jLabel1.setText("Tazas:"+cupsBoiler);
-                check.BoilerSensor(cupsBoiler, waterSensor);
-                check.setPanel(cupsBoiler, jPanel4);
-                if(cupsBoiler==0){
-                    t.stop();
-                }
-            }
-        };
-        t = new Timer(500,ac);
-        t.start();
-        
-        
-             
+        if(!brewCycle){
+                jLabel6.setText("El usuario esta vaciando agua"); 
+             ac = new ActionListener() {
+                 @Override
+                 public void actionPerformed(ActionEvent e) {
+                     if(cupsBoiler==0){
+                         t.stop();
+                     }
+                     else{
+                         cupsBoiler--;
+                     }
+                     jProgressBar1.setValue(cupsBoiler);
+                     jLabel1.setText("Tazas:"+cupsBoiler);
+                     check.BoilerSensor(cupsBoiler, waterSensor);
+                     check.setPanel(cupsBoiler, jPanel4);
+                 }
+             };
+             t = new Timer(500,ac);
+             t.start(); 
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
     
     //-----------------------------------------Instanciacion----------------------------------------------------------------
@@ -319,8 +352,6 @@ public class Test extends javax.swing.JFrame {
     boolean buttonState;
     //Instanciando al Boiler
     WaterSensor waterSensor = new WaterSensor(); // Sensor Boiler
-    
-    
     WarmerBoiler warmerBoiler = new WarmerBoiler();
     PressureRelief pressureRelief = new PressureRelief();
     Boiler boiler = new Boiler(pressureRelief, warmerBoiler);
@@ -336,55 +367,72 @@ public class Test extends javax.swing.JFrame {
     Button button = new Button(false);
     
     //CoffeeMaker(boolean state, int cupsBoiler, int cupsPot, SensorPot sensorPot, Pot pot, WaterSensor waterSensor){
-    CoffeeMaker coffeeMaker = new CoffeeMaker(buttonState, cupsBoiler, cupsPot, sensorPot, pot , waterSensor, light, button);
+    CoffeeMaker coffeeMaker = new CoffeeMaker(cupsBoiler, cupsPot, sensorPot, pot , waterSensor, light, button, pressureRelief, warmerBoiler);
     //-----------------------------------------------------------------------------------------------------------------------
     
     int time=0;
+    boolean brewCycle=false;
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         //BUTTON BREW
         t.stop();
         time = 0;
-        jPanel3.setBackground(Color.BLUE);
+        pressureRelief.setReliefValveState(ValveState.VALVE_IS_CLOSED);
+        
+        check.setPanelValve(jPanel3, pressureRelief);
         check.BoilerSensor(cupsBoiler, waterSensor);
         check.PlateSensor(cupsPot, sensorPot);
         
         button.on();
-        //usar el CoffeMaker.brew;
-        //buttonState = butt
-        
+     
         ac = new ActionListener() {
+            
             @Override
             public void actionPerformed(ActionEvent e) {
+                brewCycle=true;
                 time++;
-                //if(sensorPot.getState() == SensorStatePlate.EMPTY){
+                coffeeMaker.update(cupsBoiler, cupsPot, sensorPot, pot, waterSensor, light, button);
+                check.PlateSensor(cupsPot, sensorPot);
+                if(sensorPot.getState() == SensorStatePlate.WARMER_EMPTY){
+                    coffeeMaker.update(cupsBoiler, cupsPot, sensorPot, pot, waterSensor, light, button);
+                    coffeeMaker.makeCoffee();
+                    jLabel6.setText("No hay jarra, ponga una jarra");                    
+                }
+                else{
+                    jLabel1.setText("Tazas:"+cupsBoiler);
+                    jLabel6.setText("Please Wait...Making Coffee :p");
                     check.PlateSensor(cupsPot, sensorPot);
                     check.setPanelPlate(jPanel2, sensorPot);
-                //}
                 
-                if(time >= 5){
-                    if(cupsBoiler>0){
-                       cupsBoiler--;
+                    if(time >= 5){
+                        System.out.println("GUI TAZAS:"+cupsBoiler);
+                        coffeeMaker.makeCoffee();
+                        cupsPot++;
+                        cupsBoiler--;
+                        jProgressBar1.setValue(cupsBoiler);
+                        jProgressBar2.setValue(cupsPot);
                     }
-                    cupsPot++;
-                    //coffeeMaker.makeCoffee();
-                    jProgressBar1.setValue(cupsBoiler);
-                    jProgressBar2.setValue(cupsPot);
-                }
-                if(cupsBoiler==0){
-                    t.stop();
-                    check.setPanel(cupsBoiler, jPanel4);
-                }
+                    if(cupsBoiler==0){
+                        waterSensor.setSensorState(SensorStateBoiler.IS_EMPTY);
+                        coffeeMaker.update(cupsBoiler, cupsPot, sensorPot, pot, waterSensor, light, button);
+                        System.out.println("GUI TAZAS:"+cupsBoiler);
+                        coffeeMaker.makeCoffee();
+                        t.stop();
+                        check.setPanel(cupsBoiler, jPanel4);
+                        check.PlateSensor(cupsPot, sensorPot);
+                        check.setPanelValve(jPanel3, pressureRelief);
+                        jLabel1.setText("Tazas:"+cupsBoiler);
+                        jLabel6.setText("Enjoy Coffee :) !!!!!");
+                        brewCycle=false;
+                    } 
+                }              
             }
         };
         t = new Timer(500,ac);
-        t.start();
-        
+        t.start();    
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
-        t.stop();
         sensorPot.setState(SensorStatePlate.WARMER_EMPTY);
         jProgressBar2.setVisible(false);
         Jar.setVisible(true);
@@ -443,6 +491,8 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/RodrigoMenacho/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/coffeeMaker/ISensorPot.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/GUI/Check.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/coffeeMaker/WaterSensor.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/coffeeMaker/CoffeeMaker.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/coffeeMaker/Boiler.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/coffeeMaker/PressureRelief.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/coffe-marker/CoffeeMakerGUI/src/GUI/Test.java</file>
         </group>
     </open-files>
 </project-private>

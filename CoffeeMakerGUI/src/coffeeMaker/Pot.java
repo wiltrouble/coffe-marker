@@ -15,7 +15,7 @@ public class Pot {
         }
         
         public void pauseHeatPot() {
-            warmerPlate.setWarmerState(sensorPot.getState());
+            warmerPlate.setWarmeroff();
         }
         
 }

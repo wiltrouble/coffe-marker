@@ -11,21 +11,23 @@ public class WarmerPlate implements IWarmer {
 	public void setWarmerState(SensorStatePlate estadoSensor) {
 
 		if (estadoSensor == SensorStatePlate.EMPTY) {
-			System.out.println("el sensor mado una seal de que el pot esta vacio //apagamos calentador");
+			System.out.println("---> Jarra Vacia");
 			warmerState = WarmerState.WARMER_IS_OFF;
 		}
 
 		if (estadoSensor == SensorStatePlate.WARMER_EMPTY) {
-			System.out
-					.println("el sensor mado una se�al de que el pot no esta en su contendor //apagamos calentador");
+			System.out.println("---> No hay Jarra!!!!--- Calentador OFF");
 			warmerState = WarmerState.WARMER_IS_OFF;
 		}
 		if (estadoSensor == SensorStatePlate.NOT_EMPTY) {
-			System.out.println(
-					"el sensor mado una se�al de que el pot tiene contenido //prendemos el calentado calentador");
+			System.out.println("---> Jarra no Vacia--- Calentador ON");
 			warmerState = WarmerState.WARMER_IS_ON;
 		}
 	}
+        public void setWarmeroff(){
+            System.out.println("Calentador Stop");
+            warmerState = WarmerState.WARMER_IS_OFF;
+        }
 
 	@Override
 	public WarmerState getWarmerState() {
