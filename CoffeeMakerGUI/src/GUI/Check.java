@@ -5,6 +5,8 @@
  */
 package GUI;
 
+
+import coffeeMaker.WaterSensor;
 import coffeeMaker.enums.SensorStateBoiler;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -13,13 +15,28 @@ import java.awt.Color;
  * @author RodrigoMenacho
  */
 public class Check {
-    public void checkSensor(int state, JPanel panel ){
-        if (state>0) {
+        
+    public void BoilerSensor(int cupState, JPanel panel ,WaterSensor waterSensor){
+        
+        if (cupState>0) {
             panel.setBackground(Color.GREEN);
-            //SensorStateBoiler waterSensor = SensorStateBoiler.IS_NOT_EMPTY;
+            waterSensor.setSensorState(SensorStateBoiler.IS_NOT_EMPTY);
+            
+        }
+        else{
+            panel.setBackground(Color.RED);
+            waterSensor.setSensorState(SensorStateBoiler.IS_EMPTY);
+        }
+    }
+    
+    public void PlateSensor(int cupState, JPanel panel){
+        
+        if (cupState>0) {
+            panel.setBackground(Color.GREEN);
         }
         else{
             panel.setBackground(Color.RED);
         }
     }
+    
 }

@@ -1,6 +1,6 @@
 package coffeeMaker;
 import coffeeMaker.enums.*;
-public class SensorBoiler {
+public class UNUSEDSensorBoiler {
         //UN-USED
     
 	private int pesoBoiler=1;//1=vacio

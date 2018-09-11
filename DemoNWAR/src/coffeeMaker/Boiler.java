@@ -24,11 +24,11 @@ public class Boiler {
 		reliefValve.setReliefValveState(ValveState.VALVE_IS_OPEN);
 	}
 	
-	public boolean isReady() {
+	/*public boolean isReady() {
 		if (waterSensor.getSensorState() == SensorStateBoiler.IS_EMPTY) {
 			return false;
 		}
 		
 		return true;
-	}
+	}*/
 }

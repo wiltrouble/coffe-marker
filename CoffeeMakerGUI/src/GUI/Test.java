@@ -254,17 +254,17 @@ public class Test extends javax.swing.JFrame {
     //int cupsPot=0;
     Timer t;
     ActionListener ac;
-    int CupsBoiler=0;
+    int cupsBoiler=0;
     Check check = new Check();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CupsBoiler++;
-                jProgressBar1.setValue(CupsBoiler);
-                jLabel1.setText("Tazas:"+CupsBoiler);
-                check.checkSensor(CupsBoiler, jPanel4);
+                cupsBoiler++;
+                jProgressBar1.setValue(cupsBoiler);
+                jLabel1.setText("Tazas:"+cupsBoiler);
+                check.BoilerSensor(cupsBoiler, jPanel4, waterSensor);
             }
         };
         t = new Timer(500,ac);
@@ -273,8 +273,9 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     boolean stateJar=false;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // PONER JARRA
         stateJar = true;
+        sensorPot.setState(SensorStatePlate.NOT_EMPTY);
         jProgressBar2.setVisible(true);
         Jar.setVisible(false);
          
@@ -288,46 +289,72 @@ public class Test extends javax.swing.JFrame {
          ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CupsBoiler--;
-                jProgressBar1.setValue(CupsBoiler);
-                jLabel1.setText("Tazas:"+CupsBoiler);
-                if(CupsBoiler==0){
+                cupsBoiler--;
+                jProgressBar1.setValue(cupsBoiler);
+                jLabel1.setText("Tazas:"+cupsBoiler);
+                check.BoilerSensor(cupsBoiler, jPanel4, waterSensor);
+                if(cupsBoiler==0){
                     t.stop();
                 }
             }
         };
         t = new Timer(500,ac);
         t.start();
-        check.checkSensor(CupsBoiler, jPanel2);
+        
         
              
     }//GEN-LAST:event_jButton4ActionPerformed
+    
+    //-----------------------------------------Instanciacion----------------------------------------------------------------
     int cupsPot=0;
     boolean buttonState;
+    //Instanciando al Boiler
+    WaterSensor waterSensor = new WaterSensor(); // Sensor Boiler
+    WarmerBoiler warmerBoiler = new WarmerBoiler();
+    PressureRelief pressureRelief = new PressureRelief();
+    Boiler boiler = new Boiler(pressureRelief, warmerBoiler);
+    
+    
+    //Instanciando a la zona Pot
+    SensorPot sensorPot = new SensorPot(); // Sensor Pot
+    WarmerPlate warmerPlate = new WarmerPlate();
+    Pot pot = new Pot(sensorPot, warmerPlate);
+    
+    //Instanciando Luz y Button
+    Light light = new Light();
+    Button button = new Button(false);
+    
+    //CoffeeMaker(boolean state, int cupsBoiler, int cupsPot, SensorPot sensorPot, Pot pot, WaterSensor waterSensor){
+    CoffeeMaker coffeeMaker = new CoffeeMaker(buttonState, cupsBoiler, cupsPot, sensorPot, pot , waterSensor, light, button);
+    //-----------------------------------------------------------------------------------------------------------------------
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
+
         t.stop();
+        
+        
         jPanel3.setBackground(Color.BLUE);
+        
         buttonState = true;
         //usar el CoffeMaker.brew;
-        CoffeeMaker coffeeMaker = new CoffeeMaker(buttonState,cupsPot);
-        coffeeMaker.makeCoffee();
+        //buttonState = butt
+        
         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cupsPot++;
                 check.checkSensor(cupsPot-5, jPanel2);
                 if(cupsPot>=5){
-                    if(CupsBoiler>0){
-                       CupsBoiler--;
+                    if(cupsBoiler>0){
+                       cupsBoiler--;
                     }
-                    
-                    jProgressBar1.setValue(CupsBoiler);
+                    coffeeMaker.makeCoffee();
+                    jProgressBar1.setValue(cupsBoiler);
                     jProgressBar2.setValue(cupsPot-4);
                 }
-                if(CupsBoiler==0){
+                if(cupsBoiler==0){
                     t.stop();
-                    check.checkSensor(CupsBoiler, jPanel4);
+                    check.checkSensor(cupsBoiler, jPanel4);
                 }
             }
         };
@@ -337,11 +364,13 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
         t.stop();
+        sensorPot.setState(SensorStatePlate.WARMER_EMPTY);
         jProgressBar2.setVisible(false);
         Jar.setVisible(true);
         cupsPot=0;
-        check.checkSensor(cupsPot, jPanel2);
+        check.PlateSensor(cupsPot, jPanel2);
         jProgressBar2.setValue(cupsPot);
     }//GEN-LAST:event_jButton6ActionPerformed
 

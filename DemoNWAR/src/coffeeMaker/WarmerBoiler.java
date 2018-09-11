@@ -1,30 +1,23 @@
 package coffeeMaker;
 
-public class WarmerBoiler implements IWarmer {
-<<<<<<< origin/AbelNWAR
-	protected boolean on;
-	
-	public void turnOn() {
-		this.on = true;
-	}
-	
-	public void turnOff() {
-		this.on = false;
-=======
+import coffeeMaker.enums.WarmerState;
+import coffeeMaker.interfaces.IWarmer;
 
-	@Override
-	public boolean swichWarmer(SensorState estadoSensor) {
-		boolean estadoCalentador=true;
-		if(estadoSensor==SensorState.NOT_EMPTY) {
-			estadoCalentador =false;
-				}
+public class WarmerBoiler implements IWarmer {
+        private WarmerState warmerStateBoiler;
+        @Override
+        public WarmerState getWarmerState() {
+            return warmerStateBoiler;
+        }
+
+        @Override
+        public void setWarmerState(WarmerState warmerState) {
+            if(warmerState == WarmerState.WARMER_IS_ON) {
+			warmerStateBoiler = WarmerState.WARMER_IS_ON;
+            }
 		
-		if(estadoSensor==SensorState.WARMER_EMPTY) {
-			estadoCalentador= false;
-				}
-		
-		return estadoCalentador;
->>>>>>> local
-	}
-	
+		if(warmerState == warmerState.WARMER_IS_OFF) {
+			warmerStateBoiler = WarmerState.WARMER_IS_OFF;
+                }
+        }
 }

@@ -1,40 +1,54 @@
 package coffeeMaker;
 
+import coffeeMaker.enums.SensorStateBoiler;
+import coffeeMaker.interfaces.IReliefValve;
+import coffeeMaker.interfaces.IWarmer;
+import coffeeMaker.enums.SensorStatePlate;
+
 public class CoffeeMaker {
-	Boiler boiler = new Boiler();
-	Pot pot = new Pot();
-	Button button = new Button();
-	Light light = new Light();
-	SensorPot sensorPot = new SensorPot();
-	SensorBoiler sensorBoiler = new SensorBoiler();
-	SensorState state;
+	Boiler boiler;
+	Pot pot;
+	Button button;
+	Light light;
+        int cupsBoiler;
+        int cupsPot;
+	IWarmer warmer;
+	SensorPot sensorPot;
+	WaterSensor waterSensor;
+        
+        public CoffeeMaker(boolean state, int cupsBoiler, int cupsPot, SensorPot sensorPot, Pot pot, WaterSensor waterSensor, Light light, Button button){
+            button = new Button(state);
+            this.cupsBoiler = cupsBoiler;
+            this.waterSensor = waterSensor;
+            this.cupsPot = cupsPot;
+            this.sensorPot = sensorPot;
+            this.pot = pot;
+            this.light = light;
+            this.button = button;
+        }
+        
+	
 	public void makeCoffee() {
-		//Es un ciclo infinito, pero tal vez se podria crear un flag para que cuando acabe el proceso cambie de estado
-		while (boiler.flag==0) {
+		
+		//while (cupsBoiler!=0) {
+                
 		//Pregunta si cambia de estado el boton
 			if (button.state) {
 				
 				//Entra en funcionamiento el calentamiento del Boiler
-				if (sensorBoiler.getState()) {
+				if (waterSensor.getSensorState()== SensorStateBoiler.IS_NOT_EMPTY) {
 					boiler.startBrewing();
-					pot.heatWarmer();
+					pot.heatPot(cupsPot);
 					light.onCycleLight();
-					
+				
+                                        
 					//Pregunta si se retira el pot de la zonaPot
-					if(sensorPot.getState()==state.EMPTY) {
+					if( sensorPot.getState(cupsPot) == SensorStatePlate.EMPTY ) {
 						boiler.pause();
-						pot.pauseWarmer();
+						pot.pauseHeatPot(cupsPot);
 						light.waitingLight();
 					}
 					
-					//Pregunta si ya no hay agua en el boiler, y si ya no hay acaba el proceso
-					if(sensorBoiler.getState()==state.EMPTY) {
-						boiler.pause();
-						light.readyLight();
-						pot.pauseWarmer();
-						button.off();
-						break;
-					}
 				}
 				
 			}
@@ -42,8 +56,14 @@ public class CoffeeMaker {
 				//Enciende un LED de espera.
 				light.waitingLight();
 			}
-			
-		}
+                        //Pregunta si ya no hay agua en el boiler, y si ya no hay acaba el proceso
+                        if(cupsBoiler == 0) {
+                                boiler.pause();
+                                light.readyLight();
+                                pot.pauseHeatPot(cupsPot);
+                                button.off();
+                        }
+		//}
 		
 	}
 }

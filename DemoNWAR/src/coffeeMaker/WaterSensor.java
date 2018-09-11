@@ -5,8 +5,8 @@ import coffeeMaker.enums.*;
 public class WaterSensor {
 	public SensorStateBoiler waterLevel;
 	
-	WaterSensor() {
-		this.waterLevel = SensorStateBoiler.IS_NOT_EMPTY;
+	public WaterSensor() {
+		this.waterLevel = SensorStateBoiler.IS_EMPTY;
 	}
 	
 	public SensorStateBoiler getSensorState() {

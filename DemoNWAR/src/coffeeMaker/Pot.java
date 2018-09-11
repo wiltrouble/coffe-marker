@@ -2,69 +2,20 @@ package coffeeMaker;
 
 public class Pot {
 	int capacidadPot;
-	public int getCapacidadPot() {
-		return capacidadPot;
+        SensorPot sensorPot;
+	WarmerPlate warmerPlate;
+        
+	public Pot(SensorPot sensorPot, WarmerPlate warmerPlate ) {
+            this.warmerPlate = warmerPlate;
+            this.sensorPot = sensorPot;
 	}
-
-
-
-	public void setCapacidadPot(int capacidadPot) {
-		this.capacidadPot = capacidadPot;
-	}
-
-
-
-	
-	
-
-
-
-	SensorPot sesor=new SensorPot();
-	
-	WarmerPlate calentador=new WarmerPlate();
-	
-	
-	
-	
-	public Pot() {
-		// TODO Auto-generated constructor stub
-	}
-	/*	
-	public void estadoPot() {
-	//sesor.getState(capacidadPot);
-	
-	calentador.getState(sesor.getState(capacidadPot));
-	}
-		
-	public void cargarPot(int capacidad) {
-		capacidadPot=capacidad;
-		//	sesor.getState(capacidadPot);
-		
-		calentador.getState(sesor.getState(capacidadPot));
-			
-}
-
-public void ponerPotEnContenedor(){
-	capacidadPot=1;
-	//	sesor.getState(capacidadPot);
-	calentador.getState(sesor.getState(capacidadPot));
-}
-
-
-public void sacarPot() {	
-	capacidadPot=0;
-	//	sesor.getState(capacidadPot);
-	calentador.getState(sesor.getState(capacidadPot));
-}
-
-*/
-	
-	
-
-public void headPot(int ParamatePot) {
-	calentador.getState(sesor.getState(ParamatePot));
-}
-
-	
-	
+        
+        public void heatPot(int ParamatePot) {
+            warmerPlate.setState(sensorPot.getState(ParamatePot));
+        }
+        
+        public void pauseHeatPot(int ParamatePot) {
+            warmerPlate.setState(sensorPot.getState(ParamatePot));
+        }
+        
 }

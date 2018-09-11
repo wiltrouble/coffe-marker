@@ -1,18 +1,18 @@
 package coffeeMaker;
 
 import coffeeMaker.interfaces.IReliefValve;
-import markv.enums.ValveState;
+import coffeeMaker.enums.ValveState;
 
 public class PressureRelief implements IReliefValve{
-
+    private ValveState reliefState;
     @Override
     public ValveState getReliefValveState() {
-        return null;
+        return reliefState;
     }
 
     @Override
     public void setReliefValveState(ValveState reliefValveState) {
-        
+        reliefState = reliefValveState;
     }
 
 }
