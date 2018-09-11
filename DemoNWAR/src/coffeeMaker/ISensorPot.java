@@ -4,5 +4,5 @@ import coffeeMaker.enums.SensorStatePlate;
 
 public  interface ISensorPot {
 	
-	SensorStatePlate getState(int parameter) ;
+	SensorStatePlate getState() ;
 }

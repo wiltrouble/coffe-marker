@@ -26,6 +26,8 @@ import GUI.Check;
 import javax.swing.JProgressBar;
 import coffeeMaker.*;
 import coffeeMaker.enums.*;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
 /**
  *
  * @author RodrigoMenacho
@@ -71,13 +73,13 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         Jar = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,15 +96,15 @@ public class Test extends javax.swing.JFrame {
 
         jProgressBar1.setBackground(new java.awt.Color(51, 153, 255));
         jProgressBar1.setForeground(new java.awt.Color(255, 102, 255));
-        jProgressBar1.setMaximum(12);
+        jProgressBar1.setMaximum(13);
         jProgressBar1.setOrientation(1);
-        jProgressBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jProgressBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(jProgressBar1);
-        jProgressBar1.setBounds(200, 230, 30, 90);
+        jProgressBar1.setBounds(200, 220, 30, 90);
 
         jLabel1.setText("Tazas = 0");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 260, 48, 14);
+        jLabel1.setBounds(190, 330, 48, 14);
 
         jButton2.setText("Poner Jarra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +137,7 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2.setForeground(new java.awt.Color(51, 0, 0));
         jProgressBar2.setMaximum(12);
         jProgressBar2.setOrientation(1);
-        jProgressBar2.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jProgressBar2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jProgressBar2.setOpaque(true);
         getContentPane().add(jProgressBar2);
         jProgressBar2.setBounds(450, 250, 40, 70);
@@ -145,7 +147,7 @@ public class Test extends javax.swing.JFrame {
         jLabel2.setText("COFFEE MAKER 3000");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 11, 251, 32);
+        jLabel2.setBounds(10, 11, 272, 30);
 
         jButton5.setText("Brew");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -155,22 +157,6 @@ public class Test extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5);
         jButton5.setBounds(320, 150, 89, 49);
-
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(360, 260, 44, 37);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel4.setToolTipText("SB");
@@ -195,7 +181,7 @@ public class Test extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(250, 280, 32, 36);
+        jPanel4.setBounds(260, 260, 32, 36);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setToolTipText("SB");
@@ -245,7 +231,21 @@ public class Test extends javax.swing.JFrame {
         getContentPane().add(Jar);
         Jar.setBounds(410, 210, 130, 120);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\coffeeSmall2.png")); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 37, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(360, 260, 44, 37);
         getContentPane().add(jLabel5);
         jLabel5.setBounds(90, 20, 500, 370);
 
@@ -256,6 +256,7 @@ public class Test extends javax.swing.JFrame {
     ActionListener ac;
     int cupsBoiler=0;
     Check check = new Check();
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         ac = new ActionListener() {
@@ -264,7 +265,11 @@ public class Test extends javax.swing.JFrame {
                 cupsBoiler++;
                 jProgressBar1.setValue(cupsBoiler);
                 jLabel1.setText("Tazas:"+cupsBoiler);
-                check.BoilerSensor(cupsBoiler, jPanel4, waterSensor);
+                check.BoilerSensor(cupsBoiler,  waterSensor);
+                check.setPanel(cupsBoiler, jPanel4);
+                if(cupsBoiler>=12){
+                    t.stop();
+                }
             }
         };
         t = new Timer(500,ac);
@@ -278,6 +283,7 @@ public class Test extends javax.swing.JFrame {
         sensorPot.setState(SensorStatePlate.NOT_EMPTY);
         jProgressBar2.setVisible(true);
         Jar.setVisible(false);
+        cupsPot=1;
          
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -292,7 +298,8 @@ public class Test extends javax.swing.JFrame {
                 cupsBoiler--;
                 jProgressBar1.setValue(cupsBoiler);
                 jLabel1.setText("Tazas:"+cupsBoiler);
-                check.BoilerSensor(cupsBoiler, jPanel4, waterSensor);
+                check.BoilerSensor(cupsBoiler, waterSensor);
+                check.setPanel(cupsBoiler, jPanel4);
                 if(cupsBoiler==0){
                     t.stop();
                 }
@@ -310,6 +317,8 @@ public class Test extends javax.swing.JFrame {
     boolean buttonState;
     //Instanciando al Boiler
     WaterSensor waterSensor = new WaterSensor(); // Sensor Boiler
+    
+    
     WarmerBoiler warmerBoiler = new WarmerBoiler();
     PressureRelief pressureRelief = new PressureRelief();
     Boiler boiler = new Boiler(pressureRelief, warmerBoiler);
@@ -328,33 +337,41 @@ public class Test extends javax.swing.JFrame {
     CoffeeMaker coffeeMaker = new CoffeeMaker(buttonState, cupsBoiler, cupsPot, sensorPot, pot , waterSensor, light, button);
     //-----------------------------------------------------------------------------------------------------------------------
     
+    int time=0;
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        //BUTTON BREW
         t.stop();
-        
-        
+        time = 0;
         jPanel3.setBackground(Color.BLUE);
+        check.BoilerSensor(cupsBoiler, waterSensor);
+        check.PlateSensor(cupsPot, sensorPot);
         
-        buttonState = true;
+        button.on();
         //usar el CoffeMaker.brew;
         //buttonState = butt
         
         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cupsPot++;
-                check.checkSensor(cupsPot-5, jPanel2);
-                if(cupsPot>=5){
+                time++;
+                //if(sensorPot.getState() == SensorStatePlate.EMPTY){
+                    check.PlateSensor(cupsPot, sensorPot);
+                    check.setPanelPlate(jPanel2, sensorPot);
+                //}
+                
+                if(time >= 5){
                     if(cupsBoiler>0){
                        cupsBoiler--;
                     }
-                    coffeeMaker.makeCoffee();
+                    cupsPot++;
+                    //coffeeMaker.makeCoffee();
                     jProgressBar1.setValue(cupsBoiler);
-                    jProgressBar2.setValue(cupsPot-4);
+                    jProgressBar2.setValue(cupsPot);
                 }
                 if(cupsBoiler==0){
                     t.stop();
-                    check.checkSensor(cupsBoiler, jPanel4);
+                    check.setPanel(cupsBoiler, jPanel4);
                 }
             }
         };
@@ -370,7 +387,7 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2.setVisible(false);
         Jar.setVisible(true);
         cupsPot=0;
-        check.PlateSensor(cupsPot, jPanel2);
+        check.setPanel(cupsPot, jPanel2);
         jProgressBar2.setValue(cupsPot);
     }//GEN-LAST:event_jButton6ActionPerformed
 

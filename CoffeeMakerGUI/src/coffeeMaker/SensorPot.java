@@ -12,24 +12,8 @@ public class SensorPot implements ISensorPot {
             this.statePlate = statePlate;
         }
         
-	public SensorStatePlate getState(int overPlate) {
-			
-		if (overPlate<weightPot) {
-			System.out.println("====sensor devuelve no existe pot====");
-                        statePlate = SensorStatePlate.WARMER_EMPTY;
-			return statePlate;
-			
-			
-		}
-		
-		if (overPlate==weightPot) {
-			System.out.println("====sensor  devuelve que el pot esta  pero vacio====");
-			statePlate = SensorStatePlate.EMPTY;
-                        return statePlate;
-		}
-		System.out.println("====sensor devuelve que el pot tiene contenido====");
-		statePlate = SensorStatePlate.NOT_EMPTY;
-                return statePlate;
+	public SensorStatePlate getState() {
+            return statePlate;
 	}
 
 }

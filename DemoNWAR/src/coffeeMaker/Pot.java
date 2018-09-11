@@ -10,12 +10,12 @@ public class Pot {
             this.sensorPot = sensorPot;
 	}
         
-        public void heatPot(int ParamatePot) {
-            warmerPlate.setState(sensorPot.getState(ParamatePot));
+        public void heatPot() {
+            warmerPlate.setState(sensorPot.getState());
         }
         
-        public void pauseHeatPot(int ParamatePot) {
-            warmerPlate.setState(sensorPot.getState(ParamatePot));
+        public void pauseHeatPot() {
+            warmerPlate.setState(sensorPot.getState());
         }
         
 }

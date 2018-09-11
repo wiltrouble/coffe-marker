@@ -38,14 +38,14 @@ public class CoffeeMaker {
 				//Entra en funcionamiento el calentamiento del Boiler
 				if (waterSensor.getSensorState()== SensorStateBoiler.IS_NOT_EMPTY) {
 					boiler.startBrewing();
-					pot.heatPot(cupsPot);
+					pot.heatPot();
 					light.onCycleLight();
 				
                                         
 					//Pregunta si se retira el pot de la zonaPot
-					if( sensorPot.getState(cupsPot) == SensorStatePlate.EMPTY ) {
+					if( sensorPot.getState() == SensorStatePlate.EMPTY ) {
 						boiler.pause();
-						pot.pauseHeatPot(cupsPot);
+						pot.pauseHeatPot();
 						light.waitingLight();
 					}
 					
@@ -60,7 +60,7 @@ public class CoffeeMaker {
                         if(cupsBoiler == 0) {
                                 boiler.pause();
                                 light.readyLight();
-                                pot.pauseHeatPot(cupsPot);
+                                pot.pauseHeatPot();
                                 button.off();
                         }
 		//}
