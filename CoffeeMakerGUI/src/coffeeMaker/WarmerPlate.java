@@ -4,10 +4,10 @@ package coffeeMaker;
 import coffeeMaker.enums.*;
 import coffeeMaker.interfaces.*;
 
-public abstract class WarmerPlate implements IWarmer {
+public class WarmerPlate implements IWarmer {
 	private WarmerState warmerState;
 
-	@Override
+        
 	public void setWarmerState(SensorStatePlate estadoSensor) {
 
 		if (estadoSensor == SensorStatePlate.EMPTY) {

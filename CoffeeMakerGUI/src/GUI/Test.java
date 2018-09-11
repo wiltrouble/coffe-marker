@@ -104,7 +104,7 @@ public class Test extends javax.swing.JFrame {
 
         jLabel1.setText("Tazas = 0");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 330, 48, 14);
+        jLabel1.setBounds(220, 370, 48, 14);
 
         jButton2.setText("Poner Jarra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ public class Test extends javax.swing.JFrame {
         jLabel2.setText("COFFEE MAKER 3000");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 11, 272, 30);
+        jLabel2.setBounds(10, 11, 251, 32);
 
         jButton5.setText("Brew");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +246,8 @@ public class Test extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(360, 260, 44, 37);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coffeeSmall2.png"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(90, 20, 500, 370);
 
