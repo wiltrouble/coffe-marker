@@ -13,7 +13,7 @@ public class WaterSensor {
 		return this.waterLevel;
 	}
 	
-	public void setSensorState(SensorStateBoiler sensorState) {
-		this.waterLevel = sensorState;
+	public void setSensorState(SensorStateBoiler waterLevel) {
+		this.waterLevel = waterLevel;
 	}
 }

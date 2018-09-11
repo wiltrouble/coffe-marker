@@ -5,10 +5,10 @@ import coffeeMaker.interfaces.*;
 
 public class Boiler {
 	private final IReliefValve reliefValve;
-	private final IWarmer warmer;
+	private final WarmerBoiler warmer;
 	protected WaterSensor waterSensor;
 	
-	public Boiler(IReliefValve reliefValve, IWarmer warmer) {
+	public Boiler(IReliefValve reliefValve, WarmerBoiler warmer) {
 		this.reliefValve = reliefValve;
 		this.warmer = warmer;
 		this.waterSensor = new WaterSensor();
@@ -17,6 +17,7 @@ public class Boiler {
 	public void startBrewing() {
 		reliefValve.setReliefValveState(ValveState.VALVE_IS_CLOSED);
 		warmer.setWarmerState(WarmerState.WARMER_IS_ON);
+                
 	}
 	
 	public void pause() {
