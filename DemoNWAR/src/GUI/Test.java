@@ -24,6 +24,10 @@ import javax.swing.plaf.metal.MetalProgressBarUI;
 import javax.swing.plaf.synth.SynthProgressBarUI;
 import GUI.Check;
 import javax.swing.JProgressBar;
+import coffeeMaker.*;
+import coffeeMaker.enums.*;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
 /**
  *
  * @author RodrigoMenacho
@@ -39,6 +43,7 @@ public class Test extends javax.swing.JFrame {
         initComponents();
         //jProgressBar1.setUI(new SynthProgressBarUI());
         jProgressBar2.setVisible(false);
+        Jar.setVisible(true);
         jProgressBar1.setUI(new BasicProgressBarUI(){
                 
             
@@ -68,14 +73,17 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        Jar = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jButton1.setText("Agregar agua");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +91,20 @@ public class Test extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(40, 190, 99, 23);
 
         jProgressBar1.setBackground(new java.awt.Color(51, 153, 255));
         jProgressBar1.setForeground(new java.awt.Color(255, 102, 255));
-        jProgressBar1.setMaximum(12);
+        jProgressBar1.setMaximum(13);
         jProgressBar1.setOrientation(1);
         jProgressBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(jProgressBar1);
+        jProgressBar1.setBounds(200, 220, 30, 90);
 
         jLabel1.setText("Tazas = 0");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(190, 330, 48, 14);
 
         jButton2.setText("Poner Jarra");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +112,8 @@ public class Test extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(560, 150, 89, 23);
 
         jButton3.setText("Parar Llenado");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +121,8 @@ public class Test extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(40, 230, 99, 23);
 
         jButton4.setText("vaciar agua");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +130,8 @@ public class Test extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(50, 270, 89, 23);
 
         jProgressBar2.setBackground(new java.awt.Color(204, 255, 255));
         jProgressBar2.setForeground(new java.awt.Color(51, 0, 0));
@@ -119,11 +139,15 @@ public class Test extends javax.swing.JFrame {
         jProgressBar2.setOrientation(1);
         jProgressBar2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jProgressBar2.setOpaque(true);
+        getContentPane().add(jProgressBar2);
+        jProgressBar2.setBounds(450, 250, 40, 70);
 
         jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("COFFEE MAKER 3000");
         jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 11, 272, 30);
 
         jButton5.setText("Brew");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -131,19 +155,8 @@ public class Test extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
-        );
+        getContentPane().add(jButton5);
+        jButton5.setBounds(320, 150, 89, 49);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel4.setToolTipText("SB");
@@ -167,6 +180,9 @@ public class Test extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(260, 260, 32, 36);
+
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setToolTipText("SB");
 
@@ -189,115 +205,71 @@ public class Test extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(200, 110, 33, 37);
+
         jButton6.setText("Quitar Jarra");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(560, 190, 91, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jButton4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(98, 98, 98)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton6))
-                .addGap(84, 84, 84))
+        javax.swing.GroupLayout JarLayout = new javax.swing.GroupLayout(Jar);
+        Jar.setLayout(JarLayout);
+        JarLayout.setHorizontalGroup(
+            JarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))))
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addContainerGap(20, Short.MAX_VALUE))
+        JarLayout.setVerticalGroup(
+            JarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
+
+        getContentPane().add(Jar);
+        Jar.setBounds(410, 210, 130, 120);
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 37, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(360, 260, 44, 37);
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(90, 20, 500, 370);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    int a=0;
+    //int cupsPot=0;
     Timer t;
     ActionListener ac;
-    int i=0;
+    int cupsBoiler=0;
     Check check = new Check();
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                i++;
-                jProgressBar1.setValue(i);
-                jLabel1.setText("Tazas:"+i);
-                check.checkSensor(i, jPanel4);
+                cupsBoiler++;
+                jProgressBar1.setValue(cupsBoiler);
+                jLabel1.setText("Tazas:"+cupsBoiler);
+                check.BoilerSensor(cupsBoiler,  waterSensor);
+                check.setPanel(cupsBoiler, jPanel4);
+                if(cupsBoiler>=12){
+                    t.stop();
+                }
             }
         };
         t = new Timer(500,ac);
@@ -306,9 +278,12 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     boolean stateJar=false;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // PONER JARRA
         stateJar = true;
+        sensorPot.setState(SensorStatePlate.NOT_EMPTY);
         jProgressBar2.setVisible(true);
+        Jar.setVisible(false);
+        cupsPot=1;
          
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -320,42 +295,83 @@ public class Test extends javax.swing.JFrame {
          ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                i--;
-                jProgressBar1.setValue(i);
-                jLabel1.setText("Tazas:"+i);
-                if(i==0){
+                cupsBoiler--;
+                jProgressBar1.setValue(cupsBoiler);
+                jLabel1.setText("Tazas:"+cupsBoiler);
+                check.BoilerSensor(cupsBoiler, waterSensor);
+                check.setPanel(cupsBoiler, jPanel4);
+                if(cupsBoiler==0){
                     t.stop();
                 }
             }
         };
         t = new Timer(500,ac);
         t.start();
-        check.checkSensor(i, jPanel2);
+        
         
              
     }//GEN-LAST:event_jButton4ActionPerformed
-    int c=0;
+    
+    //-----------------------------------------Instanciacion----------------------------------------------------------------
+    int cupsPot=0;
+    boolean buttonState;
+    //Instanciando al Boiler
+    WaterSensor waterSensor = new WaterSensor(); // Sensor Boiler
+    
+    
+    WarmerBoiler warmerBoiler = new WarmerBoiler();
+    PressureRelief pressureRelief = new PressureRelief();
+    Boiler boiler = new Boiler(pressureRelief, warmerBoiler);
+    
+    
+    //Instanciando a la zona Pot
+    SensorPot sensorPot = new SensorPot(); // Sensor Pot
+    WarmerPlate warmerPlate = new WarmerPlate();
+    Pot pot = new Pot(sensorPot, warmerPlate);
+    
+    //Instanciando Luz y Button
+    Light light = new Light();
+    Button button = new Button(false);
+    
+    //CoffeeMaker(boolean state, int cupsBoiler, int cupsPot, SensorPot sensorPot, Pot pot, WaterSensor waterSensor){
+    CoffeeMaker coffeeMaker = new CoffeeMaker(buttonState, cupsBoiler, cupsPot, sensorPot, pot , waterSensor, light, button);
+    //-----------------------------------------------------------------------------------------------------------------------
+    
+    int time=0;
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //BUTTON BREW
         t.stop();
+        time = 0;
         jPanel3.setBackground(Color.BLUE);
-        //BrewButton
-        //button.on();
+        check.BoilerSensor(cupsBoiler, waterSensor);
+        check.PlateSensor(cupsPot, sensorPot);
+        
+        button.on();
+        //usar el CoffeMaker.brew;
+        //buttonState = butt
+        
         ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c++;
-                check.checkSensor(c-5, jPanel2);
-                if(c>=5){
-                    if(i>0){
-                       i--;
+                time++;
+                //if(sensorPot.getState() == SensorStatePlate.EMPTY){
+                    check.PlateSensor(cupsPot, sensorPot);
+                    check.setPanelPlate(jPanel2, sensorPot);
+                //}
+                
+                if(time >= 5){
+                    if(cupsBoiler>0){
+                       cupsBoiler--;
                     }
-                    
-                    jProgressBar1.setValue(i);
-                    jProgressBar2.setValue(c-4);
+                    cupsPot++;
+                    //coffeeMaker.makeCoffee();
+                    jProgressBar1.setValue(cupsBoiler);
+                    jProgressBar2.setValue(cupsPot);
                 }
-                if(i==0){
+                if(cupsBoiler==0){
                     t.stop();
-                    check.checkSensor(i, jPanel4);
+                    check.setPanel(cupsBoiler, jPanel4);
                 }
             }
         };
@@ -365,11 +381,14 @@ public class Test extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
         t.stop();
+        sensorPot.setState(SensorStatePlate.WARMER_EMPTY);
         jProgressBar2.setVisible(false);
-        c=0;
-        check.checkSensor(c, jPanel2);
-        jProgressBar2.setValue(c);
+        Jar.setVisible(true);
+        cupsPot=0;
+        check.setPanel(cupsPot, jPanel2);
+        jProgressBar2.setValue(cupsPot);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -410,6 +429,7 @@ public class Test extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -420,6 +440,7 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

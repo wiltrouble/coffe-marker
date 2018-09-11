@@ -11,11 +11,11 @@ public class Pot {
 	}
         
         public void heatPot() {
-            warmerPlate.setState(sensorPot.getState());
+            warmerPlate.setWarmerState(sensorPot.getState());
         }
         
         public void pauseHeatPot() {
-            warmerPlate.setState(sensorPot.getState());
+            warmerPlate.setWarmerState(sensorPot.getState());
         }
         
 }

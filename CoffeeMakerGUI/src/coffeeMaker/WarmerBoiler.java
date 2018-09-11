@@ -1,9 +1,9 @@
 package coffeeMaker;
 
-import coffeeMaker.enums.WarmerState;
+import coffeeMaker.enums.*;
 import coffeeMaker.interfaces.IWarmer;
 
-public class WarmerBoiler implements IWarmer {
+public abstract class WarmerBoiler implements IWarmer {
         private WarmerState warmerStateBoiler;
         @Override
         public WarmerState getWarmerState() {
@@ -11,6 +11,7 @@ public class WarmerBoiler implements IWarmer {
         }
 
         @Override
+        @SuppressWarnings("static-access")
         public void setWarmerState(WarmerState warmerState) {
             if(warmerState == WarmerState.WARMER_IS_ON) {
 			warmerStateBoiler = WarmerState.WARMER_IS_ON;
@@ -20,4 +21,5 @@ public class WarmerBoiler implements IWarmer {
 			warmerStateBoiler = WarmerState.WARMER_IS_OFF;
                 }
         }
+
 }
